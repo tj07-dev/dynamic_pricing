@@ -20,6 +20,13 @@ st.set_page_config(
 st.markdown(
     """
 <style>
+    :root {
+            color-scheme: light;
+        }
+    body, .stApp {
+            background-color: #ffffff !important;
+            color: #000000 !important;
+        }
     .main-header {
         font-size: 2.5rem;
         font-weight: bold;
@@ -992,28 +999,9 @@ with st.spinner("🧠 Processing elite intelligence signals..."):
         predicted_price_placeholder.markdown(
             f"""
         <div class="{change_class}" style="padding:1.5rem;text-align:center;position:relative">
-            <h3 style="margin:0 0 0.5rem 0;font-size:1.1rem">{change_icon} Elite Intelligence</h3>
             <h1 style="font-size:3.2rem">${elite_price:.0f}</h1>
             <div style="font-size:1.2rem;font-weight:bold;margin-bottom:0.75rem">
                 Predicted Price
-            </div>
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;font-size:0.9rem">
-                <div style="text-align:center;padding:0.25rem">
-                    <div style="font-weight:bold;color:{"#" + intel_color}">{scarcity_intel:.1f}x</div>
-                    <div style="opacity:0.9">Scarcity</div>
-                </div>
-                <div style="text-align:center;padding:0.25rem">
-                    <div style="font-weight:bold">{engagement_intel:.1f}</div>
-                    <div style="opacity:0.9">Engagement</div>
-                </div>
-                <div style="text-align:center;padding:0.25rem">
-                    <div style="font-weight:bold">{timing_intel:.1f}</div>
-                    <div style="opacity:0.9">Timing</div>
-                </div>
-                <div style="text-align:center;padding:0.25rem">
-                    <div style="font-weight:bold">{quality_intel:.1f}</div>
-                    <div style="opacity:0.9">Quality</div>
-                </div>
             </div>
         </div>
         """,
