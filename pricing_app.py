@@ -499,18 +499,72 @@ with col3:
     current_price = max(50, float(selected_row.get("optimal_price", 500)))
     price_class = "success-card" if current_price > 300 else "metric-card"
 
+    if current_price > 700:
+        price_status = "💎 PREMIUM"
+        price_subtitle = "High-end positioning"
+        price_icon = "💎"
+    elif current_price > 400:
+        price_status = "⭐ COMPETITIVE"
+        price_subtitle = "Strong market value"
+        price_icon = "⭐"
+    else:
+        price_status = "💡 OPPORTUNITY"
+        price_subtitle = "Room for optimization"
+        price_icon = "💡"
+
     st.markdown(
         f"""
-    <div class="{price_class}" style="height:50%;padding:1rem;display:flex;flex-direction:column;justify-content:center">
-        <h3 style="margin:0 0 0.5rem 0;font-size:1rem">💰 Current Price</h3>
-        <h1 style="margin:0;font-size:2.8rem;line-height:1">${current_price:.0f}</h1>
+    <div class="metric-card" style="height:100%;padding:1.5rem;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg, rgba(31,119,180,0.1) 0%, rgba(118,75,162,0.1) 100%);"></div>
+        <div style="position:relative;z-index:1;margin-bottom:0.5rem">
+            <div style="display:flex;align-items:center;justify-content:center;gap:0.5rem;margin-bottom:0.25rem">
+                <span style="font-size:1.2rem;font-weight:600;color:#fff">{price_icon}</span>
+                <span style="font-size:0.85rem;font-weight:500;color:rgba(255,255,255,0.9);text-transform:uppercase;letter-spacing:0.5px">{price_status}</span>
+            </div>
+            <div style="text-align:center;font-size:0.7rem;color:rgba(255,255,255,0.8);font-style:italic">{price_subtitle}</div>
+        </div>
+        <div style="position:relative;z-index:1;text-align:center;flex-grow:1;display:flex;flex-direction:column;justify-content:center">
+            <div style="margin-bottom:0.5rem;font-size:0.8rem;color:rgba(255,255,255,0.9);font-weight:500;letter-spacing:1px;text-transform:uppercase">
+                Current Market Price
+            </div>
+            <div style="position:relative">
+                <span style="font-size:3.8rem;font-weight:800;color:#fff;line-height:1;margin-right:0.25rem">$</span>
+                <span style="font-size:3.2rem;font-weight:800;color:#fff;line-height:1">{current_price:.0f}</span>
+                <span style="font-size:1.2rem;font-weight:300;color:rgba(255,255,255,0.7);vertical-align:top">.00</span>
+            </div>
+        </div>
+        <div style="position:relative;z-index:1;margin-top:0.75rem;padding-top:0.75rem; display:hidden;">
+        </div>
     </div>
     """,
         unsafe_allow_html=True,
     )
 
-    # Prediction placeholder
-    predicted_price_placeholder = st.empty()
+    # Enhanced Prediction Placeholder
+    predicted_price_placeholder = st.markdown(
+        """
+    <div id="prediction-container" style="min-height:200px;display:flex;align-items:center;justify-content:center">
+        <div style="text-align:center;padding:2rem;background:rgba(255,255,255,0.05);border-radius:12px;border:1px dashed rgba(255,255,255,0.2);width:100%;height:100%">
+            <div style="font-size:1.5rem;color:rgba(255,255,255,0.6);margin-bottom:1rem">🧠</div>
+            <div style="color:rgba(255,255,255,0.7);font-size:0.9rem;margin-bottom:0.5rem">Processing Intelligence Signals</div>
+            <div style="color:rgba(255,255,255,0.5);font-size:0.8rem">Analyzing market dynamics & competitive positioning...</div>
+        </div>
+    </div>
+    """,
+        unsafe_allow_html=True,
+    )
+    # st.markdown(
+    #     f"""
+    # <div class="{price_class}" style="height:50%;padding:1rem;display:flex;flex-direction:column;justify-content:center">
+    #     <h3 style="margin:0 0 0.5rem 0;font-size:1rem">💰 Current Price</h3>
+    #     <h1 style="margin:0;font-size:2.8rem;line-height:1">${current_price:.0f}</h1>
+    # </div>
+    # """,
+    #     unsafe_allow_html=True,
+    # )
+
+    # # Prediction placeholder
+    # predicted_price_placeholder = st.empty()
 
 st.divider()
 
