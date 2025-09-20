@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+
+# FastAPI (general Python web app ignores)
+.env
+*.db
+*.sqlite3
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test & coverage
+htmlcov/
+.coverage
+.tox/
+pytest_cache/
+.cache/
+
+dynamic-pricing
+*.pyc
